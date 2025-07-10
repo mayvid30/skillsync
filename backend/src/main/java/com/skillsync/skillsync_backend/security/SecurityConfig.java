@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()   // login & register
+                .requestMatchers("/api/auth/**","/swagger-ui/**", "/v3/api-docs/**").permitAll()   // login & register
                 .anyRequest().authenticated()
             )
             .authenticationProvider(authProvider())
