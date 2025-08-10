@@ -1,1 +1,33 @@
-<p>signup works!</p>
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <input formControlName="username" placeholder="Username" class="w-full p-2 border rounded" />
+    <input formControlName="email" type="email" placeholder="Email" class="w-full p-2 border rounded" />
+    <input formControlName="password" type="password" placeholder="Password" class="w-full p-2 border rounded" />
+    <input formControlName="firstName" placeholder="First Name" class="w-full p-2 border rounded" />
+    <input formControlName="lastName" placeholder="Last Name" class="w-full p-2 border rounded" />
+    <textarea formControlName="bio" placeholder="Bio" class="w-full p-2 border rounded"></textarea>
+    <input formControlName="profilePictureUrl" placeholder="Profile Picture URL" class="w-full p-2 border rounded" />
+
+    <select formControlName="role" class="w-full p-2 border rounded">
+      <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+    </select>
+
+    <input formControlName="timezone" placeholder="Timezone" class="w-full p-2 border rounded" />
+
+    <select formControlName="experienceLevel" class="w-full p-2 border rounded">
+      <option *ngFor="let level of experienceLevels" [value]="level">{{ level }}</option>
+    </select>
+
+    <label class="flex items-center space-x-2">
+      <input type="checkbox" formControlName="isAvailable" />
+      <span>Available for mentoring</span>
+    </label>
+
+    <button type="submit" [disabled]="signupForm.invalid"
+      class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+      Sign Up
+    </button>
+  </form>
+</div>
